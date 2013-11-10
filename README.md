@@ -1,4 +1,4 @@
 blog
 ====
 
-JDEV/ADF apps
+JDEV/ADF apps by Red Samurai
