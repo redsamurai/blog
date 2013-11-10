@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelStretchLayout id="psl1">
+          <f:facet name="center">
+            <af:panelSplitter id="ps1" splitterPosition="498">
+              <f:facet name="first">
+               <af:panelGroupLayout layout="scroll">
+                <af:table value="#{bindings.RegionsView1.collectionModel}"
+                          var="row" rows="#{bindings.RegionsView1.rangeSize}"
+                          emptyText="#{bindings.RegionsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.RegionsView1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.RegionsView1Query.queryDescriptor}"
+                          queryListener="#{bindings.RegionsView1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.RegionsView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.RegionsView1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          partialTriggers="::cb5 ::cb1 ::cb2 ::cb4 ::cb7">
+                  <af:column sortProperty="RegionId" filterable="true"
+                             sortable="true"
+                             headerText="#{bindings.RegionsView1.hints.RegionId.label}"
+                             id="c1">
+                    <af:outputText value="#{row.RegionId}" id="ot2">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.RegionsView1.hints.RegionId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="RegionName" filterable="true"
+                             sortable="true"
+                             headerText="#{bindings.RegionsView1.hints.RegionName.label}"
+                             id="c2">
+                    <af:outputText value="#{row.RegionName}" id="ot1"/>
+                  </af:column>
+                </af:table>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="second">
+                <af:popup id="p1" contentDelivery="lazyUncached">
+                  <af:dialog id="d2">
+                    <af:panelFormLayout id="pfl1">
+                      <af:inputText value="#{bindings.RegionId.inputValue}"
+                                    label="#{bindings.RegionId.hints.label}"
+                                    required="#{bindings.RegionId.hints.mandatory}"
+                                    columns="#{bindings.RegionId.hints.displayWidth}"
+                                    maximumLength="#{bindings.RegionId.hints.precision}"
+                                    shortDesc="#{bindings.RegionId.hints.tooltip}"
+                                    id="it2">
+                        <f:validator binding="#{bindings.RegionId.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.RegionId.format}"/>
+                      </af:inputText>
+                      <af:inputText value="#{bindings.RegionName.inputValue}"
+                                    label="#{bindings.RegionName.hints.label}"
+                                    required="#{bindings.RegionName.hints.mandatory}"
+                                    columns="#{bindings.RegionName.hints.displayWidth}"
+                                    maximumLength="#{bindings.RegionName.hints.precision}"
+                                    shortDesc="#{bindings.RegionName.hints.tooltip}"
+                                    id="it1">
+                        <f:validator binding="#{bindings.RegionName.validator}"/>
+                      </af:inputText>
+                      <f:facet name="footer">
+                        <af:panelGroupLayout layout="vertical" id="pgl1">
+                          <af:panelGroupLayout layout="horizontal" id="pgl2">
+                          <af:commandButton partialSubmit="true" actionListener="#{bindings.Commit.execute}"
+                                            text="Commit"
+                                            id="cb6"/>
+                          <af:commandButton text="close" id="cb3"/>
+                            
+                          </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                      </f:facet>
+                    </af:panelFormLayout>
+                  </af:dialog>
+                </af:popup>
+              </f:facet>
+            </af:panelSplitter>
+            <!-- id="af_one_column_stretched"   -->
+          </f:facet>
+          <f:facet name="top">
+           <af:group>
+            <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                              text="CreateInsert"
+                              disabled="#{!bindings.CreateInsert.enabled}"
+                              id="cb7">
+            
+            </af:commandButton>
+            
+            <af:commandButton text="open" id="cb8">
+            <af:showPopupBehavior popupId="p1"/> 
+            </af:commandButton>
+            </af:group>
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

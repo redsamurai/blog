@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="11.1.2.60.81"
+  ClearCacheOnRollback="true"
+  ComponentClass="com.redsamurai.model.AppModuleImpl"
+  ComponentInterface="com.redsamurai.model.common.AppModule"
+  ClientProxyName="com.redsamurai.model.client.AppModuleClient">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="RegionsView1"
+    ViewObjectName="com.redsamurai.model.RegionsView"/>
+  <ClientInterface>
+    <Method
+      Name="populateTable"
+      MethodName="populateTable">
+      <Return
+        Type="void"/>
+    </Method>
+    <Method
+      Name="cleanTable"
+      MethodName="cleanTable">
+      <Return
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</AppModule>
